@@ -16,5 +16,5 @@ function willSuccess(marks) {
   return passMark > failMark;
 }
 
-const result = willSuccess(90);
+const result = willSuccess("100 , 100");
 console.log(result);
