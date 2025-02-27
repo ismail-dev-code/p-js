@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .para{
+            margin: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: lightgray;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hi this event handle.</h1>
+    <div id="para-container">
+        <p class="para">this my comment - 1</p>
+        <p class="para">this my comment - 2</p>
+        <p class="para">this my comment - 3</p>
+        <br>
+        <textarea name="" id="comment-area" cols="40" rows="6"></textarea>
+        <br>
+        <button id="post-btn">Post</button>
+    </div>
+
+    <script>
+        document.getElementById('post-btn').addEventListener('click', function(){
+            const commentArea = document.getElementById('comment-area');
+            const comntContainer = document.getElementById('para-container');
+            const cmtValue = commentArea.value;
+            const cmtP = document.createElement('p');
+            cmtP.classList.add('para');
+            cmtP.innerText = cmtValue;
+            comntContainer.appendChild(cmtP);
+
+            
+        
+        })
+    </script>
+</body>
+</html>

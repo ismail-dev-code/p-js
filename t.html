@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T only</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5.0.0-beta.9/daisyui.css" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div id="container" class="flex p-10 text-white flex-col items-center">
+        <h1 id="text-pabo">btn e click korle kicu ekta hbe</h1>
+        <textarea name="" id="text-area" cols="40" rows="5"></textarea>
+        <br>
+    <button id="ami-btn" class="btn">Button</button>
+
+    </div>
+    <div class="hero bg-base-200 min-h-screen">
+        <div id="container-div" class="hero-content flex-col lg:flex-row-reverse">
+          
+          <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+            <form class="card-body">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Products Name</span>
+                </label>
+                <input id="product" type="text" placeholder="Products Name Here" class="input input-bordered" required />
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Brand</span>
+                </label>
+                <input id="brand-input" type="text" placeholder="Brand Name" class="input input-bordered" required />
+                <label class="label"><span class="label-text">Price</span></label>
+                <input id="price" type="number" placeholder="Price" class="input input-bordered" required />
+                <label class="label">
+                  <a href="#" class="label-text-alt link link-hover">Need More?</a>
+                </label>
+              </div>
+              <div class="form-control mt-6">
+                <button id="products-btn" class="btn btn-primary">Add Products</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+ <script src="t.js"></script>
+</body>
+</html>

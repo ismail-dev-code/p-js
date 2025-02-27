@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emni P</title>
+    <style>
+        .para{
+            margin: 10px;
+            padding: 10px;
+            background-color: lightblue;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <h1>We will explore Get element by id</h1>
+        <div id="comment-container">
+            <p class="para">I am paragraph. How are you today?I am paragraph. How are you today?
+                I am paragraph. How are you today?
+                I am paragraph. How are you today?I am paragraph. How are you today?
+                I am paragraph. How are you today?
+                I am paragraph. How are you today?</p>
+            <p class="para">I am paragraph. How are you today?I am paragraph. How are you today?
+                I am paragraph. How are you today?
+                I am paragraph. How are you today?I am paragraph. How are you today?
+                I am paragraph. How are you today?
+                I am paragraph. How are you today?</p>
+            <p class="para">I am paragraph. How are you today?I am paragraph. How are you today?
+                I am paragraph. How are you today?
+                I am paragraph. How are you today?I am paragraph. How are you today?
+                I am paragraph. How are you today?
+                I am paragraph. How are you today?</p>
+
+            <textarea name="" id="input-area" cols="40" rows="5"></textarea>
+            <button id="post-btn">Post</button>
+        </div>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+        document.getElementById('post-btn').addEventListener('click', function(){
+        //    document.body.style.backgroundColor = 'green';
+        // document.body.style.color = 'green';
+        // document.body.style.fontSize = '30px';
+            const inputAreaText = document.getElementById('input-area');
+           const newText = inputAreaText.value;
+           
+           const comntContainer = document.getElementById('comment-container');
+           const newP = document.createElement('p');
+           newP.classList.add('para');
+           newP.innerText = newText;
+           comntContainer.appendChild(newP);
+           inputAreaText.value= '';
+    })
+    </script>
+</body>
+</html>
