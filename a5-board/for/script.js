@@ -1,72 +1,57 @@
-const todayDate = document.getElementById("coto-date");
-const currentDate = new Date();
-todayDate.innerText = currentDate.toDateString();
-
-const btns = document.querySelectorAll(".btn");
-const cardTitle = document.querySelectorAll(".card-title");
+const buttons = document.querySelectorAll(".btn");
+const taskKomce = document.getElementById("task");
+const taskBarce = document.getElementById("count");
 const historyLog = document.getElementById("history");
+const cardTitle = document.querySelectorAll(".card-title");
+// console.log(object);
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener("click", function () {
+    alert("Board Updated Successfully");
+    let taskK = parseInt(taskKomce.innerText);
+    let taskB = parseInt(taskBarce.innerText);
+    // console.log(typeof taskB, typeof taskK);
+   
 
-for (let i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-    const taskKombe = document.getElementById("task");
-    const taskBarbe = document.getElementById("count");
-
-    if (parseInt(taskKombe.innerText) <= 0) {
-      alert("No tasks remaining!");
-    } else {
-      alert("Board Updated Successfully!");
-      if (parseInt(taskKombe.innerText) <= 1) {
-        alert("Congrats!! you have successfully completed the current task");
-      }
-      taskKombe.innerText = parseInt(taskKombe.innerText) - 1;
-      taskBarbe.innerText = parseInt(taskBarbe.innerText) + 1;
-
-      btns[i].disabled = true;
-      btns[i].classList.add(
-        "bg-gray-400",
-        "font-medium",
-        "text-white",
-        "rounded-xl",
-        "py-1.5",
-        "px-4",
-        "text-[16px]",
-        "cursor-not-allowed"
-      );
-      btns[i].classList.remove("btn");
+    if (taskK > 0 && taskB >= 23) {
+      taskK -= 1;
+      taskB += 1;
+      taskKomce.innerText = taskK;
+      taskBarce.innerText = taskB;
+      buttons[i].disabled = true;
+      const newHistory = document.createElement("div");
+    if(taskK<=0){
+      alert("Congratss! you have successfully completed the task")
     }
+      newHistory.innerHTML = `
+     <div class=" p-2 bg-green-100 m-2 text-center rounded-lg ">
 
-    const newElement = document.createElement("div");
-    historyLog.appendChild(newElement);
+  <h1>you have completed the task</h1>
+  <h2 class ="text-bold">${cardTitle[i].innerText}</h2>
+  <p> at ${getTime().hours}:${getTime().minutes}:${getTime().seconds} ${getTime().amPm}  </p>
+</div>
+     
+`;
 
-    newElement.innerHTML = `
-    <div class="bg-slate-100 p-3 mb-7 rounded-xl"> 
-        <p> You have completed the task ${
-          cardTitle[i].innerText
-        } at ${format12HourTime()} </p>
-    </div>
-`});
-document.getElementById("clear-btn").addEventListener("click", function () {
-    historyLog.innerText = "";
+      historyLog.appendChild(newHistory);
+    }
   });
+}
 
+function getTime() {
+  const time = new Date();
+  let hours = time.getHours(); 
+  const minutes = time.getMinutes();
+  const seconds = time.getSeconds();
+  const amPm = hours >= 12 ? "PM" : "AM";
 
-    function format12HourTime() {
-      const nowTime = new Date();
-      let hours = nowTime.getHours();
-      let minutes = nowTime.getMinutes();
-      let seconds = nowTime.getSeconds();
-      const amPm = hours >= 12 ? "PM" : "AM";
+ 
+  hours = hours % 12 || 12;
 
-      hours = hours % 12 || 12;
-
-      return `${hours}:${minutes}:${seconds} ${amPm}`;
-    }
-    
+  return {
+    hours,
+    minutes,
+    seconds,
+    amPm,
   };
+}
 
-const colors = ["indigo", "#33FF57", "yellow", "pink", "#3357FF"];
-
-document.getElementById("changeBg").addEventListener("click", function () {
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  document.body.style.backgroundColor = colors[randomIndex];
-});

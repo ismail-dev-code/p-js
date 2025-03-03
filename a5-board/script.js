@@ -4,9 +4,10 @@
 // }
 
 document.getElementById("complete-btn").addEventListener("click", function () {
-  const taskAssigned = document.getElementById("task-assign");
-  const taskCompleted = document.getElementById("task-complete");
-
+  const taskAssigned = document.querySelectorAll("#task-assign");
+  const taskCompleted = document.querySelectorAll("#task-complete");
+  const historyLog = document.getElementById("history");
+  const cardTitle = document.querySelectorAll(".card-title");
   let taskAssignedElement = parseInt(taskAssigned.innerText);
   let taskCompletedElement = parseInt(taskCompleted.innerText);
 
@@ -20,11 +21,12 @@ document.getElementById("complete-btn").addEventListener("click", function () {
 });
 
 const newElement = document.createElement("div");
+historyLog.appendChild(cardTitle);
+historyLog.appendChild(newElement);
 
     newElement.innerHTML = `
     <div class="bg-slate-100 p-3 mb-7 rounded-xl"> 
-        <p> You have completed the task ${
-          cardTitle[i].innerText
+        <p> You have completed the task ${cardTitle
         } at ${format12HourTime()} </p>
     </div>
 `;
@@ -38,10 +40,6 @@ const newElement = document.createElement("div");
 
       hours = hours % 12 || 12;
 
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-
       return `${hours}:${minutes}:${seconds} ${amPm}`;
     }
 
-    historyLog.appendChild(newElement);
